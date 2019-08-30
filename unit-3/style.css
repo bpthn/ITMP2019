@@ -1,6 +1,6 @@
 body{
 	font-family: 'Itim', cursive, sans-serif;
-	font-size: 150%;
+	font-size: 300%;
 	margin:40px;
 	text-align: center;
 	background-image: url(bg.png);
@@ -16,7 +16,7 @@ body{
 }
 
 .title{
-	color: #fff;
+	color: #e0e0e0;
 	animation: shadow .25s infinite alternate,
 	title 1s infinite steps(2);
 }
@@ -24,28 +24,28 @@ body{
 @keyframes shadow{
 	from{
 		text-shadow:
-		-1px -1px 0px #f6b7aa,
-		1px -1px 0px #f6b7aa,
-		-1px 1px 0px #f6b7aa,
-		1px 1px 0px #f6b7aa,
-		1px 2px 0px #f6b7aa,
-		2px 3px 0px #f6b7aa,
-		3px 4px 0px #f6b7aa,
-		4px 5px 0px #f6b7aa,
-		5px 6px 0px #f6b7aa,
-		6px 7px 0px #f6b7aa
+		-1px -1px 0px #5c5c5c,
+		1px -1px 0px #5c5c5c,
+		-1px 1px 0px #5c5c5c,
+		1px 1px 0px #5c5c5c,
+		1px 2px 0px #5c5c5c,
+		2px 3px 0px #5c5c5c,
+		3px 4px 0px #5c5c5c,
+		4px 5px 0px #5c5c5c,
+		5px 6px 0px #5c5c5c,
+		6px 7px 0px #5c5c5c
 		;
 	}
 	to{
 		text-shadow:
-		-1px -1px 0px #f67855,
-		1px -1px 0px #f67855,
-		-1px 1px 0px #f67855,
-		1px 1px 0px #f67855,
-		1px 2px 0px #f67855,
-		2px 3px 0px #f67855,
-		3px 4px 0px #f67855,
-		4px 5px 0px #f67855
+		-1px -1px 0px #b5b3b3,
+		1px -1px 0px #b5b3b3,
+		-1px 1px 0px #b5b3b3,
+		1px 1px 0px #b5b3b3,
+		1px 2px 0px #b5b3b3,
+		2px 3px 0px #b5b3b3,
+		3px 4px 0px #b5b3b3,
+		4px 5px 0px #b5b3b3
 		;
 	}
 }
