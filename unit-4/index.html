@@ -5,6 +5,7 @@
     <style type="text/css">
     body{
         margin:0;
+        background-color: #e1dbff;
     }
 #rainbow{
     --size:50px;
@@ -15,10 +16,11 @@
     transition: all .3s;
     height:var(--size);
     width: var(--size);
-    background: hsl(var(--hue),90%,70%);
+    background: hsl(var(--hue),65%,75%);
     display: inline-block;
-    border-radius: 100px;
-    margin: 1px;
+    border-radius: 30px;
+    border-left: 25px solid transparent;
+    margin: 2px;
 }
 #howManyRainbowStripsDoYouWantHeu{
     padding: 0.5em;
@@ -28,19 +30,36 @@
     border: 1px solid #eee;
     border-radius: 0.1em;
 }
+.center{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    
+}
+h1, input{
+    font-family: "Itim";
+    font-size: 3em;
+    color: #9486db;
+}
 button{
+    background-color: #fff;
     font-size: 2em;
-    border: 1px solid #eee;
-    border-radius: 0.1em;
+    color: #9486db;
+    border: 5px solid #9486db;
+    border-radius: 0.5em;
     padding: 0.5em;
+    font-family: "Itim";
 }
 </style>
 </head>
 <body>
-    <input type="number" id="howManyRainbowStripsDoYouWantHeu" min="0" max="999" value="6">
+    <div class="center">
+    <h1>CREATE COLORFUL</h1>
+    <input type="number" id="howManyRainbowStripsDoYouWantHeu" min="0" max="999" value="360">
     <button onclick="rainbowHaiDooNoy()">Go!</button>
     <button onclick="playAnimationHaiDooNoy()">Play!</button>
     <button onclick="stopAnimationHaiDooNoy()">Stop!</button>
+    </div>
     <div id="rainbow">
     </div>
     <script type="text/javascript">
@@ -50,7 +69,7 @@ button{
             for (let i = 0; i < theNum; i++) {
                 setTimeout(function() {
                     rainbow.innerHTML += `<div class="fuse" style="--hue:${i*(360/theNum)}"></div>`;
-                }, 30*i);
+                }, 100*i);
             }
         }
         function playAnimationHaiDooNoy() {
@@ -68,7 +87,7 @@ button{
                 theFuse[k].style.transform = "scale(2)";
                 theFuse[j].style.transform = "scale(1)";
                 k++; j++;
-            }, 150);
+            }, 300);
         }
         function stopAnimationHaiDooNoy() {
             clearInterval(thePlay);
