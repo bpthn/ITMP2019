@@ -66,30 +66,34 @@ button{
         function rainbowHaiDooNoy(){
             theNum = howManyRainbowStripsDoYouWantHeu.value;
             rainbow.innerHTML = '';
+            for (var i = 0; i < theNum; i++) {
+                rainbow.innerHTML += `<div class="fuse" style="--hue:${i*(360/theNum)}" id="f-${i}"></div>`;
+            }
             for (let i = 0; i < theNum; i++) {
-                setTimeout(function() {
-                    rainbow.innerHTML += `<div class="fuse" style="--hue:${i*(360/theNum)}"></div>`;
-                }, 100*i);
+                setTimeout(function(){
+                    document.querySelector(`#f-${i}`).style.transform = 'scale(1)';
+                    document.querySelector(`#f-${i}`).style.opacity = '1';
+                },20*i);
             }
         }
-        function playAnimationHaiDooNoy() {
+        rainbowHaiDooNoy();
+        function playAnimationHaiDoNhiySiHuem(){
             theFuse = document.querySelectorAll('.fuse');
             theFuseSize = theFuse.length;
             j = theFuseSize-1;
             k = 0;
-            thePlay = setInterval(function() {
-                if (k >= theFuseSize) {
-                    k = 0;
+            thePlay = setInterval(function(){
+                if (k>= theFuseSize) {k=0
                 }
-                if (j >= theFuseSize) {
-                    j = 0;
+                if (j>= theFuseSize) {j=0
                 }
                 theFuse[k].style.transform = "scale(2)";
                 theFuse[j].style.transform = "scale(1)";
-                k++; j++;
-            }, 300);
+                k++;
+                j++;
+            },300);
         }
-        function stopAnimationHaiDooNoy() {
+        function stopAnimationHaiDoNhiySiHuem(){
             clearInterval(thePlay);
             theFuse[j].style.transform = "scale(1)";
         }
