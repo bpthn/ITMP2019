@@ -5,11 +5,24 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
 	<style type="text/css">
-		.fa-star {
-			opacity: .2;
-			cursor: pointer;
-		}
-	</style>
+	.fa-star {
+		opacity: .2;
+		cursor: pointer;
+	}
+	body{
+		background-image: url(../unit-3/bg.png);
+		background-position: 0% 0%;
+		background-size: 20%;
+		/*background-size: cover;*/
+		/*min-height: 100vh; ทำให้เวลาทำพื้นหลังแล้วมันสูงเต็มหน้าจอ*/
+		animation: bg 40s infinite linear;
+	}
+
+	@keyframes bg{
+		from{background-position: 0% 0%}
+		to{background-position: -10% -88%}
+	}
+</style>
 </head>
 <body class="screen v-middle-flex">
 	<div class="to-center cont-pd">
@@ -21,7 +34,7 @@
 
 				<div class="bg-white round shadow padding-l">
 					<div class="t-right">
-						<i class="fas fa-star cl-amber" id="u_fav" onclick="favorite()"></i>
+						<i class="fas fa-thumbs-up cl-blue-6" id="u_fav" onclick="favorite()"></i>
 					</div>
 					
 					<img src="https://picsum.photos/id/2/200/200" class="circle shadow" id="u_profile">
@@ -76,7 +89,7 @@
 
 		function renData(){
 			u_fav.style.opacity = fav[nowIndex]+".2";
-			u_profile.src = `https://picsum.photos/id/${user[nowIndex].id}/200/200`;
+			u_profile.src = `https://picsum.photos/id/${user[nowIndex].id}02/200/200`;
 			u_userName.innerText = user[nowIndex].username;
 			u_city.innerText = user[nowIndex].address.city;
 			u_name.innerText = user[nowIndex].name;
