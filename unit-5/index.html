@@ -14,21 +14,21 @@
 			<box col="6">
 				<div class="bg-white round shadow padding-l">
 					<!-- username -->
-					<h1 class="cl-purple-a4">@<span>_______</span></h1>
+					<h1 class="cl-purple-a4">@<span id="u_userName">_______</span></h1>
 					<!-- city -->
-					<h4><i class="fas fa-map-marker-alt"></i> <span>_______</span></h4>
+					<h4><i class="fas fa-map-marker-alt"></i> <span id="c_city">_______</span></h4>
 					<sp></sp>
 					<!-- name -->
-					<h2>_______ _______</h2>
+					<h2 id="n_name">_______ _______</h2>
 					<!-- company -->
-					<p>_______</p>
+					<p id="c_company">_______</p>
 					<p></p>
 					<sp></sp>
 					<p>
 						<!-- web -->
-						<i class="fas fa-globe-americas"></i> <a href="_______">_______</a> &nbsp;&nbsp;
+						<i class="fas fa-globe-americas"></i> <a href="hildegard.org" id="w_web">_______</a> &nbsp;&nbsp;
 						<!-- email -->
-						<i class="fas fa-envelope"></i> <a href="mailto:_______">_______</a>
+						<i class="fas fa-envelope"></i> <a href="mailto:Sincere@april.biz" id="e_email">_______</a>
 					</p>
 					
 				</div>
@@ -50,7 +50,14 @@
 		function ready(json){
 			console.log(json);
 			// เขียนต่อ ให้ข้อมูลคนแรก ไปแสดงผลบนหน้าเว็บ
-			// user = _______?
+			user = json;
+			u_userName.innerText = user[0].username;
+			c_city.innerText = user[0].city;
+			n_name.innerText = user[0].name;
+			c_company.innerText = user[0].company.name;
+			w_web.innerText = user[0].website;
+			e_email.innerText = user[0].email;
+
 		}
 
 		function clickRight(){
