@@ -26,7 +26,7 @@
 					<sp></sp>
 					<p>
 						<!-- web -->
-						<i class="fas fa-globe-americas"></i> <a href="hildegard.org" id="w_web">_______</a> &nbsp;&nbsp;
+						<i class="fas fa-globe-americas"></i> <a href="https://www.abtei-st-hildegard.de/hildegard-von-bingen/" id="w_web">_______</a> &nbsp;&nbsp;
 						<!-- email -->
 						<i class="fas fa-envelope"></i> <a href="mailto:Sincere@april.biz" id="e_email">_______</a>
 					</p>
@@ -52,7 +52,7 @@
 			// เขียนต่อ ให้ข้อมูลคนแรก ไปแสดงผลบนหน้าเว็บ
 			user = json;
 			u_userName.innerText = user[0].username;
-			c_city.innerText = user[0].city;
+			c_city.innerText = user[0].address.city;
 			n_name.innerText = user[0].name;
 			c_company.innerText = user[0].company.name;
 			w_web.innerText = user[0].website;
