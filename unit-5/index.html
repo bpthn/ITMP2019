@@ -4,6 +4,12 @@
 	<title>Our User</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<style type="text/css">
+		.fa-star {
+			opacity: .2;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body class="screen v-middle-flex">
 	<div class="to-center cont-pd">
@@ -12,23 +18,30 @@
 				<i class="fas fa-chevron-left" onclick="clickLeft()"></i>
 			</box>
 			<box col="6">
+
 				<div class="bg-white round shadow padding-l">
+					<div class="t-right">
+						<i class="fas fa-star cl-amber" id="u_fav" onclick="favorite()"></i>
+					</div>
+					
+					<img src="https://picsum.photos/id/2/200/200" class="circle shadow" id="u_profile">
+					<sp></sp>
 					<!-- username -->
 					<h1 class="cl-purple-a4">@<span id="u_userName">_______</span></h1>
 					<!-- city -->
-					<h4><i class="fas fa-map-marker-alt"></i> <span id="c_city">_______</span></h4>
+					<h4><i class="fas fa-map-marker-alt"></i> <span id="u_city">_______</span></h4>
 					<sp></sp>
 					<!-- name -->
-					<h2 id="n_name">_______ _______</h2>
+					<h2 id="u_name">_______ _______</h2>
 					<!-- company -->
-					<p id="c_company">_______</p>
+					<p id="u_company">_______</p>
 					<p></p>
 					<sp></sp>
 					<p>
 						<!-- web -->
-						<i class="fas fa-globe-americas"></i> <a href="https://www.abtei-st-hildegard.de/hildegard-von-bingen/" id="w_web">_______</a> &nbsp;&nbsp;
+						<i class="fas fa-globe-americas"></i> <a href="_______" id="u_web">_______</a> &nbsp;&nbsp;
 						<!-- email -->
-						<i class="fas fa-envelope"></i> <a href="mailto:Sincere@april.biz" id="e_email">_______</a>
+						<i class="fas fa-envelope"></i> <a href="mailto:_______" id="u_email">_______</a>
 					</p>
 					
 				</div>
@@ -43,6 +56,7 @@
 
 		nowIndex = 0;
 		user = [];
+		fav=[0,0,0,0,0,0,0,0,0,0];
 		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.json())
 		.then(json => ready(json))
@@ -51,21 +65,53 @@
 			console.log(json);
 			// เขียนต่อ ให้ข้อมูลคนแรก ไปแสดงผลบนหน้าเว็บ
 			user = json;
-			u_userName.innerText = user[0].username;
-			c_city.innerText = user[0].address.city;
-			n_name.innerText = user[0].name;
-			c_company.innerText = user[0].company.name;
-			w_web.innerText = user[0].website;
-			e_email.innerText = user[0].email;
+			if (localStorage.nowIndex != undefined) {
+				nowIndex =localStorage.nowIndex;
+			}
+			if (localStorage.fav != undefined) {
+				fav =JSON.parse(localStorage.fav);
+			}			
+			renData();
+		}
+
+		function renData(){
+			u_fav.style.opacity = fav[nowIndex]+".2";
+			u_profile.src = `https://picsum.photos/id/${user[nowIndex].id}/200/200`;
+			u_userName.innerText = user[nowIndex].username;
+			u_city.innerText = user[nowIndex].address.city;
+			u_name.innerText = user[nowIndex].name;
+			u_company.innerText = user[nowIndex].company.name;
+			u_web.innerText = user[nowIndex].website;
+			u_web.href = "http://"+user[nowIndex].website;
+			u_email.innerText = user[nowIndex].email;
+			u_email.href = "mailto:"+user[nowIndex].email;
 
 		}
 
 		function clickRight(){
 			// เลื่อนไปด้านขวา เช่นจาก id1 ไป id2 ถ้าเป็น id10 แล้วกดอีกจะกลับไป id1
+			nowIndex++;
+			localStorage.nowIndex = nowIndex;
+			if(nowIndex==10){
+				nowIndex=0;
+			}
+			renData();
 		}
 
 		function clickLeft(){
 			// เลื่อนไปด้านซ้าย เช่นจาก id10 ไป id9 ถ้าเป็น id1 แล้วกดอีกจะกลับไป id1
+			nowIndex--;
+			localStorage.nowIndex = nowIndex;
+			if(nowIndex==-1){
+				nowIndex=9;
+			}
+			renData();
+		}
+
+		function favorite(){
+			fav[nowIndex] = 1 - fav[nowIndex];
+			u_fav.style.opacity = fav[nowIndex]+".2";
+			localStorage.fav = JSON.stringify(fav);
 		}
 	</script>
 </body>
