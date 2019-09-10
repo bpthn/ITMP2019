@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form onsubmit="return register()">
+
+<h2>ลงทะเบียนร่วมงาน</h2>
+
+<!-- <input type="text" name="id" class="info" placeholder="รหัสนักศึกษา" required> -->
+
+<input type="text" name="fname" class="info" placeholder="ชื่อ" required>
+
+<!-- <input type="text" name="lname" class="info" placeholder="นามสกุล" required> -->
+
+<button>ลงทะเบียน</button>
+
+</form>
+
+<br><hr><br>
+
+<table>
+
+<thead>
+
+<th>ลำดับที่</th>
+
+<!-- <th>รหัสนักศึกษา</th> -->
+
+<th>ชื่อ</th>
+
+<!-- <th>นามสกุล</th> -->
+
+</thead>
+
+<tbody id="registerList">
+
+<tr></tr>
+
+</tbody>
+
+</table>
+<script type="text/javascript">
+	var i =1;
+	function register(){
+		// var info = document.getElementByClassName("info");
+		var people = document.createElement("TR");
+		// var registerList = document.getElementById("registerList");
+		
+		people.innerHTML = `<td>${i}</td>
+							<td>${document.querySelector('.info').value}</td>`;
+		i++;
+		registerList.appendChild(people);
+		document.querySelector('.info').value = "";
+
+		return false;
+	}
+	
+</script>
+</body>
+</html>
