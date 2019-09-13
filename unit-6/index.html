@@ -13,9 +13,9 @@
 		background: black;
 	}
 	#wrap{
-		background: hsl(200,100%,90%);
+		background: #c3de83;
 		width: 100%;
-		height: 90vh;
+		height: 80vh;
 		position: relative;
 	}
 	#control{
@@ -26,10 +26,32 @@
 		box-sizing: border-box;
 		display: flex;
 	}
+	#main{
+		background: #899c5c;
+		width: 100%;
+		height: 10vh;
+		box-sizing: border-box;
+		display: flex;
+	}
 	.cmd{
 		height: 100%;
 		width: 50%;
 		font-size: 2em;
+	}
+	.start{
+		height: 80%;
+		width: 20%;
+		font-size: 2em;
+		margin: auto;
+	}
+	.stop{
+		height: 80%;
+		width: 20%;
+		font-size: 2em;
+		margin: auto;
+	}
+	#score{
+		margin: auto;
 	}
 	.fruit{
 		height: 20%;
@@ -49,13 +71,13 @@
 		background-image: url('f1.png');
 	}
 	.f2{
-		background-image: url('f2.png');
+		background-image: url('f2.jpg');
 	}
 	.f3{
-		background-image: url('f3.png');
+		background-image: url('f3.jpg');
 	}
 	.f4{
-		background-image: url('f4.png');
+		background-image: url('f4.jpg');
 	}
 	#char{
 		background-image: url('char.png');
@@ -81,6 +103,14 @@
 </style>
 </head>
 <body>
+	<div id="main">
+		<button class="start" onclick="gameStart()">START</button>
+		<h1 id="score">0</h1>
+
+		<button class="stop" onclick="gameStop()">STOP</button>
+
+		
+	</div>
 	<div id="wrap">
 		<div id="char" x="0" y="4"></div>
 	</div>
@@ -91,6 +121,7 @@
 
 	<script>
 		nowID = 0;
+		score = 0;
 		
 		function gameStart(){
 			letplay = setInterval(function(){
@@ -111,12 +142,24 @@
 		}
 		function fallingSlowly(){
 			let f = document.querySelectorAll(".fruit");
+			let nowX = char.getAttribute("x");
+			nowX = parseInt(nowX);
+
+
+			
 			for (var i = 0; i < f.length; i++) {
 				let nowY = f[i].getAttribute("y");
 				nowY = parseInt(nowY);
+				let fnowX = f[i].getAttribute("x");
+				fnowX = parseInt(fnowX);
 				f[i].setAttribute("y",nowY+1);
 				if (nowY == 4) {
 					//แก้เพิ่มตรงนี้
+					if(fnowX == nowX){
+							document.getElementById("score").innerHTML = `${score}`;
+							score++;
+						
+					}
 					f[i].outerHTML = "";
 				}
 			}
