@@ -37,16 +37,19 @@
 	#paragraph.small{
 		transform: scale(0.2);
 	}
+	.parent{
+		height: 100vh;
+	}
 </style>
 </head>
 <body>
-	<div class="fullscreen bg-smoke padding-l v-middle-flex">
+	<div class="parent bg-smoke padding-l v-middle-flex">
 		<div class="to-center">
 			<h1>Welcome</h1>
 			<p>Please scroll down</p>
 		</div>
 	</div>
-	<div class="fullscreen bg-white padding-l v-middle-flex">
+	<div class="parent bg-white padding-l v-middle-flex">
 		<div class="to-center">
 			<h1>My Learning</h1>
 			<sp class="xl"></sp>
@@ -71,7 +74,7 @@
 		</div>
 
 	</div>
-	<div class="fullscreen bg-smoke padding-l v-middle-flex">
+	<div class="parent bg-smoke padding-l v-middle-flex">
 		<div class="to-center">
 			<h1>I'm Genius, right?</h1>
 			<sp class="xl"></sp>
@@ -88,5 +91,18 @@
 	<div id="topLine">
 		
 	</div>
+
+	<script type="text/javascript">
+		let bodyR = document.body.getBoundingClientRect();
+		let y = window.pageYOffset;
+		let yBottom = window.pageYOffset+window.innerHeight;
+		function onScroll(){
+			bodyR = document.body.getBoundingClientRect();
+			y = window.pageYOffset;
+			yBottom = window.pageYOffset+window.innerHeight;
+		}
+		window.addEventListener("scroll", onScroll);
+
+	</script>
 </body>
 </html>
