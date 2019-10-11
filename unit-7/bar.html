@@ -121,6 +121,7 @@
 		window.addEventListener("scroll", onScroll);
 		function ppp(){
 			let ppR = paragraph.getBoundingClientRect();
+
 			// console.log(bodyH);
 			// console.log(chart.length);
 			// console.log(ppR.top-bodyH > -100 );
@@ -130,6 +131,7 @@
 			// ppR.top ระยะห่างของพารากราฟกับขอบบนเบราเซอร์ 
 			// หาก top 0 อีลีเมนท์อยู่ชิดขอบบน
 			// หาก top window.innerHeight แปลว่าอีลีเมนท์นั้นกำลังโผล่มา
+			
 			if (ppR.top < window.innerHeight && ppR.bottom > 0) {
 				paragraph.classList.remove('small')
 			}
