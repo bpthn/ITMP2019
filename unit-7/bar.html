@@ -14,7 +14,7 @@
 	}
 	.bar .chart{
 		width: 10px;
-		background: red;
+		background: #ed9600;
 		height: 1em;
 		display: inline-block;
 		transition: all 3s;
@@ -24,15 +24,15 @@
 	}
 	#topLine{
 		height: 2px;
-		background: deeppink;
-		width: 10%;
+		background: #ed9600;
+		width: 5%;
 		position: fixed;
 		top: 0;
 		left: 0;
 	}
 	#paragraph{
 		transform: scale(1);
-		transition: all 3s;
+		transition: all .3s;
 	}
 	#paragraph.small{
 		transform: scale(0.2);
@@ -45,7 +45,7 @@
 <body>
 	<div class="parent bg-smoke padding-l v-middle-flex">
 		<div class="to-center">
-			<h1>Welcome</h1>
+			<h1 id="welcome">Welcome</h1>
 			<p>Please scroll down</p>
 		</div>
 	</div>
@@ -56,19 +56,20 @@
 			<div class="t-left">
 				<div class="bar">
 					<div class="label">Thai</div>
-					<div class="chart close" style="width: 180px"></div>
+					<div id="chart" class="chart close" style="width: 300px"></div>
 				</div>
 				<div class="bar">
 					<div class="label">English</div>
-					<div class="chart close" style="width: 200px"></div>
+					<div id="chart" class="chart close" style="width: 250px"></div>
+
 				</div>
 				<div class="bar">
-					<div class="label">Sciene</div>
-					<div class="chart close" style="width: 20px"></div>
+					<div class="label">Science</div>
+					<div id="chart" class="chart close" style="width: 80px"></div>
 				</div>
 				<div class="bar">
 					<div class="label">Math</div>
-					<div class="chart close" style="width: 40px"></div>
+					<div id="chart" class="chart close" style="width: 100px"></div>
 				</div>
 			</div>
 		</div>
@@ -88,21 +89,71 @@
 			</p>
 		</div>
 	</div>
+	<div class="parent bg-white padding-l v-middle-flex">
+	</div>
 	<div id="topLine">
 		
 	</div>
 
 	<script type="text/javascript">
+	
 		let bodyR = document.body.getBoundingClientRect();
+		let bodyH = window.innerHeight;
 		let y = window.pageYOffset;
 		let yBottom = window.pageYOffset+window.innerHeight;
+		
+		function topLineWidth() {
+			let maxWidth = document.body.getBoundingClientRect().height - window.innerHeight;
+			let nowWidth = window.pageYOffset;
+			let topLine = Math.ceil((nowWidth * 100) / maxWidth);
+			// console.log(topLine);
+			// console.log(maxWidth);
+			document.getElementById('topLine').style.width = `${topLine}%`;
+		}
+		window.addEventListener("scroll", topLineWidth);
+		
 		function onScroll(){
 			bodyR = document.body.getBoundingClientRect();
 			y = window.pageYOffset;
 			yBottom = window.pageYOffset+window.innerHeight;
+			// console.log(bodyR);
 		}
 		window.addEventListener("scroll", onScroll);
-
+		function ppp(){
+			let ppR = paragraph.getBoundingClientRect();
+			// console.log(bodyH);
+			// console.log(chart.length);
+			// console.log(ppR.top-bodyH > -100 );
+			// console.log(ppR.top-bodyH < 0);
+			// console.log(ppR.top);
+			// console.log(ppR.bottom);
+			// ppR.top ระยะห่างของพารากราฟกับขอบบนเบราเซอร์ 
+			// หาก top 0 อีลีเมนท์อยู่ชิดขอบบน
+			// หาก top window.innerHeight แปลว่าอีลีเมนท์นั้นกำลังโผล่มา
+			if (ppR.top < window.innerHeight && ppR.bottom > 0) {
+				paragraph.classList.remove('small')
+			}
+			else {
+				paragraph.classList.add('small')
+			}
+		}
+		window.addEventListener("scroll", ppp);
+		function animationChart() {
+			let chart = document.getElementsByClassName('chart');
+			let ppR = paragraph.getBoundingClientRect();
+			let wlR = welcome.getBoundingClientRect();
+			if (ppR.top > window.innerHeight && wlR.top < 0) {
+				for (let i = 0; i < chart.length; i++) {
+			 		chart[i].classList.remove('close');
+			 	}
+			}
+			else {
+				for (let i = 0; i < chart.length; i++) {
+			 		chart[i].classList.add('close');
+			 	}
+			}		
+		}
+		window.addEventListener("scroll", animationChart);
 	</script>
 </body>
 </html>
