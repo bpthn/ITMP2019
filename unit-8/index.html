@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My responsive</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        *{
+            transition: all .3s;
+        }
+        body{
+            margin: 0;
+            background: #FF5733;
+        }
+
+        #img{
+            width: 100%;
+            padding-top: 100%;
+            background-image: url(1.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .container{
+            background: white;
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            max-width: 1200px;
+            margin: auto;
+        }
+        @media (max-width: 768px){
+            body{
+                background: #FFC300 ;
+            }
+            #img{
+            width: 100%;
+            padding-top: 100%;
+            background-image: url(2.jpg);
+            
+        }
+        .container{
+            background: white;
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            max-width: 768px;
+            margin: auto;
+        }
+            
+        }
+        @media (max-width: 600px){
+            body{
+                background: #DAF7A6;
+            }
+            #img{
+            width: 100%;
+            padding-top: 100%;
+            background-image: url(3.jpg);
+            
+        }
+        .container{
+            background: white;
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            max-width: 600px;
+            margin: auto;
+        }
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="img"></div>
+    <div class="container">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque dolor harum provident nam minima tenetur eum adipisci et sunt minus beatae, nesciunt iure veniam ipsam perspiciatis repellendus magni consequuntur illo.</div>
+</body>
+</html>
